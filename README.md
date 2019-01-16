@@ -63,13 +63,20 @@ docker run -it -p 本地端口:容器端口 -v /你的本地目录:/var/www/proj
 意思是安装composer的依赖包，重新加载（比如命名空间的改变），清理缓存，开启fashop的项目
 
 
-# 如何配置FaShop？
+# 如何部署FaShop服务器端？
+
+- 首先拉取 https://github.com/mojisrc/fashop 该项目代码资源到本地，假设是放在`/你的本地目录`，那么操作如下：
 
 #### 开发模式：
 
 > docker run -it -p 9510:9510 -v /你的本地目录:/var/www/project --privileged=true ezkuangren/swoole1 /bin/bash
 
-进去之后：如果没`composer install`过的项目，请先`composer install`，然后 `php fashop start`
+进去之后：
+- 如果没`composer install`过的项目，请先`composer install`，然后 `php fashop start`
+- 然后访问 `127.0.0.1:9510/install` 进行安装
+
+后台控制面板部署：
+- 教程暂无，直接去 https://github.com/mojisrc/fashop-admin 拉取吧
 
 #### 部署模式：
 
