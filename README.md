@@ -62,3 +62,16 @@ docker run -it -p 本地端口:容器端口 -v /你的本地目录:/var/www/proj
 
 意思是安装composer的依赖包，重新加载（比如命名空间的改变），清理缓存，开启fashop的项目
 
+
+# 如何配置FaShop？
+
+#### 开发模式：
+
+> docker run -it -p 9510:9510 -v /你的本地目录:/var/www/project --privileged=true ezkuangren/swoole1 /bin/bash
+
+进去之后：如果没`composer install`过的项目，请先`composer install`，然后 `php fashop start`
+
+#### 部署模式：
+
+
+> docker run -it -p 9510:9510 -v /你的本地目录:/var/www/project --privileged=true ezkuangren/swoole1 /bin/sh -c "composer install --no-dev && composer dump-autoload -o && composer clearcache && php fashop start"
